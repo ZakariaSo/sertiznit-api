@@ -29,7 +29,10 @@ pool.connect((err) => {
   }
 });
 
-// ROUTE D'ACCUEIL / DOCUMENTATION
+// ROUTE D'ACCUEIL / DOCUMENTATION 
+
+// Swagger
+
 app.get('/', (req, res) => {
   res.json({
     message: '🎉 Bienvenue sur l\'API SerTiznit !',
@@ -43,7 +46,7 @@ app.get('/', (req, res) => {
   });
 });
 
-//  ROUTE 1 : VOIR TOUS LES ARTISANS
+//VOIR TOUS LES ARTISANS
 app.get('/artisans', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM artisans ORDER BY id');
@@ -61,7 +64,7 @@ app.get('/artisans', async (req, res) => {
   }
 });
 
-//  ROUTE 2 : VOIR UN ARTISAN PAR ID
+// VOIR UN ARTISAN PAR ID
 app.get('/artisans/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -87,7 +90,7 @@ app.get('/artisans/:id', async (req, res) => {
   }
 });
 
-//  ROUTE 3 : AJOUTER UN ARTISAN
+//  AJOUTER UN ARTISAN
 app.post('/artisans', async (req, res) => {
   try {
     const { nom, profession, telephone, note } = req.body;
@@ -119,7 +122,7 @@ app.post('/artisans', async (req, res) => {
   }
 });
 
-//  ROUTE 4 : MODIFIER UN ARTISAN
+//  MODIFIER UN ARTISAN
 app.put('/artisans/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -151,7 +154,7 @@ app.put('/artisans/:id', async (req, res) => {
   }
 });
 
-//  ROUTE 5 : SUPPRIMER UN ARTISAN
+//  SUPPRIMER UN ARTISAN
 app.delete('/artisans/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -178,7 +181,7 @@ app.delete('/artisans/:id', async (req, res) => {
   }
 });
 
-// 🎁 BONUS : RECHERCHE PAR PROFESSION
+// RECHERCHE PAR PROFESSION
 app.get('/artisans/search/:profession', async (req, res) => {
   try {
     const { profession } = req.params;
@@ -201,7 +204,7 @@ app.get('/artisans/search/:profession', async (req, res) => {
   }
 });
 
-// 🎁 BONUS : STATISTIQUES
+// STATISTIQUES
 app.get('/stats/total', async (req, res) => {
   try {
     const result = await pool.query('SELECT COUNT(*) as total FROM artisans');
@@ -218,7 +221,7 @@ app.get('/stats/total', async (req, res) => {
   }
 });
 
-// 9️⃣ DÉMARRER LE SERVEUR
+// DÉMARRER LE SERVEUR
 app.listen(PORT, () => {
   console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
   console.log(`📖 Documentation : http://localhost:${PORT}/`);

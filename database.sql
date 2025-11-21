@@ -1,6 +1,3 @@
--- 🗄️ SCRIPT SQL POUR SERTIZNIT (Version pgAdmin)
--- Créer la table des artisans
-
 
 -- Créer la table artisans
 CREATE TABLE artisans (
